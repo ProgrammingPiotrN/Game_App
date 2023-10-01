@@ -9,7 +9,26 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        return view('user.index');
+        $users = [];
+        //$users = collect();
+
+        $faker = Factory::create();
+
+        $count = $faker->numberBetween(3, 15);
+
+        for ($i=0; $i < $count; $i++) {
+            $users[$i] = [
+                'id' => $faker->numberBetween(1, 1000),
+                'name' => $faker->firstName
+            ];
+            //$users bez []
+            // $users->push($user);
+        }
+
+        return view('user.index', [
+            'users' => $users
+        ]);
+
     }
 
     public function show(int $userId)
@@ -21,7 +40,7 @@ class UserController extends Controller
             'firstName' => $faker->firstname,
             'lastName' => $faker->lastname,
             'city' => $faker->city,
-            'age' => $faker->numberBetween(12, 40),
+            'age' => $faker->numberBetween(12, 25),
         ];
 
         return view('user.show', [

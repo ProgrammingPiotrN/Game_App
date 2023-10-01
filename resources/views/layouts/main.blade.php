@@ -12,7 +12,8 @@
     <body>
         <h1>{{ $appName }}</h1>
         <div class="sidebar">
-            @section('sidebar2')
+            @section('sidebar')
+            Rodzic
                 <ul>
                     <li><a href="#">...</a></li>
                 </ul>
